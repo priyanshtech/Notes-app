@@ -1,9 +1,18 @@
-import { useContext } from "react"
+import { useContext,useState } from "react"
 import { propdistributer } from "../context/contextmagic"
 
+
 export default function Panel(){
-    const {array,setArray,setActiveId,activeId}=useContext(propdistributer)
-    return(<div className="w-20">
+    
+
+    const {array,setArray,setActiveId,activeId,isPanelOpen,setIsPanelOpen}=useContext(propdistributer)
+    return(<div className={`
+    h-screen
+    bg-gray-100
+    transition-all duration-300
+    overflow-hidden
+    ${isPanelOpen ? "w-64" : "w-0"}
+  `}>
         <h2 className="border-2 overflow-hidden rounded-md px-1 ">History</h2>
         <ul className="border">
             {array.map((item) => (
