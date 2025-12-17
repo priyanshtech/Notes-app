@@ -16,22 +16,24 @@ export default function Editor (){
 
 
     return(<div className="h-screen flex-1"><div className="flex flex-col h-screen">
-        <input className="border-2 rounded-md px-1" placeholder="title  "
-        value ={title}
-        onChange={(e)=>setTitle(e.target.value)}/>
+        
 
 
 
-        <textarea placeholder="write something " className=" border-2 rounded-md flex-1 px-1 overflow-y-auto " value ={content}
+        <textarea placeholder="Write something " className=" border-2 rounded-md flex-1 px-4 py-3 overflow-y-auto caret-blue-900" value ={content}
         onChange={(e)=>setContent(e.target.value)} /> 
         <div>
         <button
             className="border-2 rounded-md px-3 py-1  bg-blue-200"
             onClick={() => {
-                if (!title.trim() || !content.trim()){
-                    alert("both required title and content ")
+                const lines = content.trim().split("\n");
+                    const title = lines[0];
+
+                if (!title) {
+                    alert("Write something to save the note");
                     return;
-                }
+                    }
+
                 setArray(prev=>[...prev,{id: Date.now(),title,content}])
                 setTitle("");
                 setContent("");
@@ -41,7 +43,7 @@ export default function Editor (){
             >
             Save
             </button><button
-            className="border-2 rounded-md px-3 py-1  bg-blue-200"
+            className="border-2 rounded-md px-3 py-1  bg-red-200"
             onClick={() => {
                 if (!title.trim() || !content.trim()){
                     alert("both required title and content to delete")
