@@ -47,7 +47,7 @@ export default function Editor (){
                     alert("both required title and content to delete")
                     return;
                 }
-                setArray(prev=>[...prev,{id: Date.now(),title,content}])
+                 setArray(prev => prev.filter(note => note.id !== activeId));
                 setTitle("");
                 setContent("");
                 
