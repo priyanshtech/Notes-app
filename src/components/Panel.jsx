@@ -11,7 +11,7 @@ export default function Panel(){
     bg-gray-100
     transition-all duration-300
     overflow-hidden
-    ${isPanelOpen ? "w-64" : "w-0"}
+    ${isPanelOpen ? "w-40" : "w-0"}
   `}>
         <h2 className="border-2 overflow-hidden rounded-md px-1 ">History</h2>
         <ul className="border">
