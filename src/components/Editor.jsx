@@ -45,16 +45,18 @@ export default function Editor (){
             </button><button
             className="border-2 rounded-md px-3 py-1  bg-red-200"
             onClick={() => {
-                if (!title.trim() || !content.trim()){
-                    alert("both required title and content to delete")
-                    return;
-                }
-                 setArray(prev => prev.filter(note => note.id !== activeId));
-                setTitle("");
-                setContent("");
-                
+  // CASE 1: Unsaved draft
+  if (!activeId) {
+    setContent("");
+    return;
+  }
 
-            }}
+  // CASE 2: Saved note
+  setArray(prev => prev.filter(note => note.id !== activeId));
+  setActiveId(null);
+  setContent("");
+}}
+
             >
             Delete
             </button></div>
