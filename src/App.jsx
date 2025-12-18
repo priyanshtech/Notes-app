@@ -41,6 +41,7 @@ export default function App() {
                     : i
                 )
               );
+              setContent("");
               return; // ⬅️ THIS IS THE KEY
             }
 
@@ -68,7 +69,7 @@ export default function App() {
             Delete
             </button >
             <button className="border-2 bg-red-500 rounded-lg mx-2 px-2 hover:scale-102 hover:bg-red-700"onClick={()=>{return setArray(empty)}}>clear all </button><button className="border-2 mx-2 px-2 rounded-md"
-            onClick={toggleTheme}>theme switcher</button>
+            onClick={toggleTheme}>switch  {theme==="dark"?"light":"dark"}</button>
       
       <div className="flex">
         
