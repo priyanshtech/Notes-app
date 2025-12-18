@@ -5,10 +5,10 @@ import { propdistributer } from "../context/contextmagic"
 export default function Panel(){
     
 
-    const {array,setArray,setActiveId,activeId,isPanelOpen,setIsPanelOpen}=useContext(propdistributer)
+    const {array,setArray,setActiveId,activeId,isPanelOpen,setIsPanelOpen,theme,setTheme}=useContext(propdistributer)
     return(<div className={`
     h-screen
-    bg-gray-100
+    
     transition-all duration-300
     overflow-hidden
     ${isPanelOpen ? "w-40" : "w-0"}

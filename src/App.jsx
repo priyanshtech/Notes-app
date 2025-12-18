@@ -4,14 +4,14 @@ import { propdistributer } from "./context/contextmagic";
 import Panel from "./components/Panel";
 
 export default function App() {
-  const {array,setArray,isPanelOpen,setIsPanelOpen,content,setTitle,title,setContent,activeId,setActiveId}=useContext(propdistributer)
+  const {array,setArray,isPanelOpen,setIsPanelOpen,content,setTitle,title,setContent,activeId,setActiveId,theme,setTheme,toggleTheme}=useContext(propdistributer)
 
   const empty=[]
 
   return (<>
-    <div  >
+    <div  className={`${theme==="light"?"bg-white text-black":"bg-black text-white"}`}>
       
-      <h1 className="flex justify-center font-bold text-3xl bg-gray-200">NOTES</h1><button
+      <h1 className="flex justify-center font-bold text-3xl ">NOTES</h1><button
         onClick={() => setIsPanelOpen(prev => !prev)}
         className="border px-2 py-1 rounded"
       >
@@ -67,11 +67,12 @@ export default function App() {
             >
             Delete
             </button >
-            <button className="border-2 bg-red-500 rounded-lg mx-2 px-2 hover:scale-102 hover:bg-red-700"onClick={()=>{return setArray(empty)}}>clear all </button>
+            <button className="border-2 bg-red-500 rounded-lg mx-2 px-2 hover:scale-102 hover:bg-red-700"onClick={()=>{return setArray(empty)}}>clear all </button><button className="border-2 mx-2 px-2 rounded-md"
+            onClick={toggleTheme}>theme switcher</button>
       
       <div className="flex">
         
-        <Panel/>
+      <Panel/>
       <Editor/>
        </div>
 
@@ -80,11 +81,3 @@ export default function App() {
     </div></>
   );
 }
-//const [note,setNote]=useState(()=>array.find(n=>n.id===activeId))
-//const [noteTitle,setNoteTitle]=useState(note.title)
-//const [content,setContent]=useState(note.content)
-// useEffect(()=>{if (activeId){
-// const note=array.find(n=>n.id===activeId)\ setNoteTitle(title)
-//setNoteContent(content)
-// }},[activeId])
-//const note=array.find(n=>n.id===activeId)
