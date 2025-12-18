@@ -13,13 +13,13 @@ export default function Panel(){
     overflow-hidden
     ${isPanelOpen ? "w-40" : "w-0"}
   `}>
-        <h2 className="border-2 overflow-hidden rounded-md px-1 ">History</h2>
-        <ul className="border">
+        <h2 className="border-2  rounded-md px-1 ">History</h2>
+        <ul >
             {array.map((item) => (
                 <li
                 onClick={() => setActiveId(item.id)}
                 key={item.id}
-                className="border-b px-2 py-1 cursor-pointer  truncate "
+                className=" px-2 py-1 cursor-pointer   "
                 >
                 {item.title}
                 </li>
