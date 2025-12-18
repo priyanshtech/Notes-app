@@ -6,7 +6,7 @@ import Panel from "./components/Panel";
 export default function App() {
   const {array,setArray,isPanelOpen,setIsPanelOpen,content,setTitle,title,setContent,activeId,setActiveId}=useContext(propdistributer)
 
-  
+  const empty=[]
 
   return (<>
     <div  >
@@ -21,37 +21,37 @@ export default function App() {
       
       
       
-      <button
-            className="border-2 rounded-md px-3 py-1  bg-blue-200 mx-1 hover:scale-102 hover:bg-blue-300 transition-all duration-200"
-            onClick={() => {
-  const trimmed = content.trimStart();
-  const title = trimmed.split("\n")[0];
+                <button
+                      className="border-2 rounded-md px-3 py-1  bg-blue-200 mx-1 hover:scale-102 hover:bg-blue-300 transition-all duration-200"
+                      onClick={() => {
+            const trimmed = content.trimStart();
+            const title = trimmed.split(" ")[0].slice(0,10);
 
-  if (!title) {
-    alert("Write something to save the note");
-    return;
-  }
+            if (!title) {
+              alert("Write something to save the note");
+              return;
+            }
 
-  // UPDATE existing note
-  if (activeId !== null) {
-    setArray(prev =>
-      prev.map(i =>
-        i.id === activeId
-          ? { ...i, title, content }
-          : i
-      )
-    );
-    return; // ⬅️ THIS IS THE KEY
-  }
+            // UPDATE existing note
+            if (activeId !== null) {
+              setArray(prev =>
+                prev.map(i =>
+                  i.id === activeId
+                    ? { ...i, title, content }
+                    : i
+                )
+              );
+              return; // ⬅️ THIS IS THE KEY
+            }
 
-  // CREATE new note
-  setArray(prev => [
-    ...prev,
-    { id: Date.now(), title, content }
-  ]);
+            // CREATE new note
+            setArray(prev => [
+              ...prev,
+              { id: Date.now(), title, content }
+            ]);
 
-  setContent("");
-}}
+            setContent("");
+            }}
 
             >
             +
@@ -66,7 +66,8 @@ export default function App() {
 
             >
             Delete
-            </button>
+            </button >
+            <button className="border-2 bg-red-500 rounded-lg mx-2 px-2 hover:scale-102 hover:bg-red-700"onClick={()=>{return setArray(empty)}}>clear all </button>
       
       <div className="flex">
         
