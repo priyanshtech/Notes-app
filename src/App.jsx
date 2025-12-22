@@ -2,6 +2,8 @@ import { useContext, useState } from "react"
 import Editor from "./components/editor";
 import { propdistributer } from "./context/contextmagic";
 import Panel from "./components/Panel";
+import Tools from "./components/tools";
+
 
 export default function App() {
   const {array,setArray,isPanelOpen,setIsPanelOpen,content,setTitle,title,setContent,activeId,setActiveId,theme,setTheme,toggleTheme}=useContext(propdistributer)
@@ -11,7 +13,7 @@ export default function App() {
   return (<>
     <div  className={`${theme==="light"?"bg-white text-black":"bg-black text-white"}`}>
       
-      <h1 className="flex justify-center font-bold text-3xl ">NOTES</h1><button
+      <h1 className="flex justify-center font-bold text-3xl ">PromptPad</h1><button
         onClick={() => setIsPanelOpen(prev => !prev)}
         className="border px-2 py-1 rounded"
       >
@@ -70,11 +72,14 @@ export default function App() {
             </button >
             <button className="border-2 bg-red-500 rounded-lg mx-2 px-2 hover:scale-102 hover:bg-red-700"onClick={()=>{return setArray(empty)}}>clear all </button><button className="border-2 mx-2 px-2 rounded-md"
             onClick={toggleTheme}>switch  {theme==="dark"?"light":"dark"}</button>
+            
       
       <div className="flex">
         
       <Panel/>
       <Editor/>
+      <Tools
+      />
        </div>
 
 

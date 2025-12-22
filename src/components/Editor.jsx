@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { propdistributer } from "../context/contextmagic"
 
+
 export default function Editor (){
     const {title,setTitle,content,setContent,array,setArray,activeId,setActiveId}=useContext(propdistributer)
 
@@ -20,7 +21,7 @@ export default function Editor (){
 
 
 
-        <textarea placeholder="Write something " className=" border-2 rounded-md flex-1 px-4 py-3 overflow-y-auto caret-blue-900" value ={content}
+        <textarea placeholder="Write " className=" flex-1 px-10 py-10 overflow-y-auto caret-blue-100 text-3xl" value ={content}
         onChange={(e)=>setContent(e.target.value)} /> 
         <div>
         </div>
